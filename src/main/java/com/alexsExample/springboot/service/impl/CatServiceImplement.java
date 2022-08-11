@@ -1,6 +1,6 @@
 package com.alexsExample.springboot.service.impl;
 
-import com.alexsExample.springboot.exception.ResourceNotFoundException;
+import com.alexsExample.springboot.exception.SourceNotFoundException;
 import com.alexsExample.springboot.model.Cat;
 import com.alexsExample.springboot.repository.CatRepository;
 import com.alexsExample.springboot.service.CatService;
@@ -41,8 +41,8 @@ public class CatServiceImplement implements CatService {
     @Override
     public Cat updateCat(Cat cat, long id) {
 
-        ResourceNotFoundException exc = new ResourceNotFoundException("Cat", "Id: ", id);
-        Cat realCat = catRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Cat", "Id: ", id));
+        SourceNotFoundException exc = new SourceNotFoundException("Cat", "Id: ", id);
+        Cat realCat = catRepo.findById(id).orElseThrow(() -> new SourceNotFoundException("Cat", "Id: ", id));
 
         if(catRepo.findById(id) == null){
             System.err.println(exc);
@@ -56,7 +56,7 @@ public class CatServiceImplement implements CatService {
 
     @Override
     public void deleteCat(long id) {
-        catRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Cat", "Id: ", id));
+        catRepo.findById(id).orElseThrow(() -> new SourceNotFoundException("Cat", "Id: ", id));
 
         catRepo.deleteById(id);
     }

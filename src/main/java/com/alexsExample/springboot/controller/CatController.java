@@ -46,7 +46,7 @@ public class CatController {
      */
     @GetMapping("{id}")
     public ResponseEntity<Cat> getCatById(@PathVariable("id") long catId){
-        return new ResponseEntity<Cat>(catService.getCatById(catId), HttpStatus.OK);
+        return new ResponseEntity<>(catService.getCatById(catId), HttpStatus.OK);
     }
 
     /**
@@ -56,7 +56,7 @@ public class CatController {
      */
     @PutMapping("{id}")
     public ResponseEntity<Cat> updateCat(@PathVariable("id") long id,@RequestBody Cat cat){
-        return new ResponseEntity<Cat>(catService.updateCat(cat,id), HttpStatus.OK);
+        return new ResponseEntity<>(catService.updateCat(cat,id), HttpStatus.OK);
 
     }
 
@@ -68,7 +68,7 @@ public class CatController {
     public ResponseEntity<String> deleteCat(@PathVariable("id") long id){
         catService.deleteCat(id);
 
-        return new ResponseEntity<String>("Cat Deleted!", HttpStatus.OK);
+        return new ResponseEntity<>("Cat Deleted!", HttpStatus.OK);
     }
 
 }
